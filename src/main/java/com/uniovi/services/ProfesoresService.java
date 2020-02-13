@@ -17,41 +17,24 @@ public class ProfesoresService {
 	
 	@Autowired
 	private ProfesoresRepository profesoresRepository;
-	
-	private List<Profesor> profesoresList = new LinkedList<Profesor>();
-	
-	@PostConstruct
-	public void init() {
-		profesoresList.add(new Profesor(1L, "asdf", "nombre1", "Apellidos1", "categoria1"));
-		profesoresList.add(new Profesor(2L, "dni2", "nombre2", "apellidos2", "categoria2"));
-	}
-
-
-
 
 	public List<Profesor> getProfesores() {
 		List<Profesor> profesors = new ArrayList<Profesor>();
 		profesoresRepository.findAll().forEach(profesors::add);
-		//return profesors;
-		return profesoresList;
+		return profesors;
 	}
 
 	public Profesor getProfesor(Long id) {
-		//return profesoresRepository.findById(id).get();
-		return profesoresList.stream().filter(p -> p.getId()==id).findFirst().orElse(null);
+		return profesoresRepository.findById(id).get();
 	}
 
 	public void addProfesor(Profesor profesor) {
-		//profesoresRepository.save(profesor);
-		if (profesor.getId() == null) {
-			profesor.setId(profesoresList.get(profesoresList.size() - 1).getId() + 1);
-		}
-		profesoresList.add(profesor);
+		profesoresRepository.save(profesor);
+		
 	}
 
 	public void deleteProfesor(Long id) {
-		//profesoresRepository.deleteById(id);
-		profesoresList.removeIf(p -> p.getId().equals(id));
+		profesoresRepository.deleteById(id);
 	}
 
 	

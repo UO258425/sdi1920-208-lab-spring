@@ -27,29 +27,25 @@ public class ProfesoresController {
 	@RequestMapping(value = "/profesor/add", method = RequestMethod.POST)
 	public String setProfesor(@ModelAttribute Profesor profesor) {
 		profesoresService.addProfesor(profesor);
-		//return "redirect:/profesor/list";
-		return profesor.toString();
+		return "redirect:/profesor/list";
 	}
 	
-//	@RequestMapping("/profesor/add")
-//	public String getProfesor() {
-//		//return "profesor/add";
-//		return "Ok";
-//	}
+	@RequestMapping("/profesor/add")
+	public String getProfesor() {
+		return "profesor/add";
+	}
 	
 	@RequestMapping("/profesor/details/{id}")
-	public String getDetail(/*Model model,*/ @PathVariable Long id) {
-		//model.addAttribute("profesor", profesoresService.getProfesor(id));
-		//return "profesor/details";
-		return profesoresService.getProfesor(id).toString();
+	public String getDetail(Model model, @PathVariable Long id) {
+		model.addAttribute("profesor", profesoresService.getProfesor(id));
+		return "profesor/details";
 	}
 
 	
 	@RequestMapping("/profesor/delete/{id}")
 	public String deleteProfesor(@PathVariable Long id) {
 		profesoresService.deleteProfesor(id);
-		//return "redirect:/profesor/list";
-		return "Ok";
+		return "redirect:/profesor/list";
 	}
 	
 	@RequestMapping(value="/profesor/edit/{id}")
