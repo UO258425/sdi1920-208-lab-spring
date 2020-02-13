@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uniovi.entities.Profesor;
 import com.uniovi.services.ProfesoresService;
 
-@RestController
+@Controller
 public class ProfesoresController {
 
 	
@@ -20,8 +20,9 @@ public class ProfesoresController {
 	private ProfesoresService profesoresService;
 	
 	@RequestMapping("/profesor/list")
-	public String getList() {
-		return profesoresService.getProfesores().toString();
+	public String getList(Model model) {
+		model.addAttribute("profesoresList", profesoresService.getProfesores());
+		return "profesor/list";
 	}
 	
 	@RequestMapping(value = "/profesor/add", method = RequestMethod.POST)
