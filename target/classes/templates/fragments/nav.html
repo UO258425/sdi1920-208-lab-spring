@@ -1,4 +1,4 @@
-<!-- Barra de Navegaci�n superior -->
+<!-- Barra de Navegación superior -->
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -11,11 +11,29 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="/mark/list">Ver Notas</a></li>
-				<li><a href="/mark/add">Agregar Nota</a></li>
+
+				<li><a href="/">Home</a></li>
+				<li id="marks-menu" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						Gestión de notas	<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/mark/add">Agregar nota</a></li>
+						<li><a href="/mark/list">Ver notas</a></li>
+					</ul>
+				</li>
+				<li id="users-menu" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						Gestión de usuarios	<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/user/add">Agregar usuario</a></li>
+						<li><a href="/user/list">Ver usuarios</a></li>
+					</ul>
+				</li>
+				
 				<li><a href="/profesor/list">Ver profesores</a></li>
 				<li><a href="/profesor/add">Agregar profesor</a></li>
-				<li><a href="/mark/filter">Filtrar</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href="#"
@@ -27,19 +45,19 @@
 						<li><a id="btnEnglish" value="EN"> <img
 								th:src="@{/img/if_uk_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.en}">Ingl�s</span>
+								th:text="#{language.en}">Inglés</span>
 						</a></li>
 						<li><a id="btnSpanish" value="ES"> <img
 								th:src="@{/img/if_spain_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.es}">Espa�ol</span>
+								th:text="#{language.es}">Español</span>
 						</a></li>
 					</ul></li>
 
 				<li><a href="/registrarse" th:text="#{signup.message}"><span
 						class="glyphicon glyphicon-user"></span> Registrate</a></li>
 				<li><a href="/identificarse" th:text="#{login.message}"><span
-						class="glyphicon glyphicon-log-in"></span> Identif�cate</a></li>
+						class="glyphicon glyphicon-log-in"></span> Identifícate</a></li>
 			</ul>
 		</div>
 	</div>
