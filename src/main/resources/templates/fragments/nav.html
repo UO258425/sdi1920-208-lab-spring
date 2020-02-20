@@ -13,27 +13,30 @@
 			<ul class="nav navbar-nav">
 
 				<li><a href="/">Home</a></li>
-				<li id="marks-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						Gestión de notas	<span class="caret"></span>
-					</a>
+				<li id="marks-menu" class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" > 
+										<span th:text="#{nav.gestionmark}"></span>
+					
+					 <span
+						class="caret"></span>
+				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/mark/add">Agregar nota</a></li>
-						<li><a href="/mark/list">Ver notas</a></li>
-					</ul>
-				</li>
-				<li id="users-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						Gestión de usuarios	<span class="caret"></span>
-					</a>
+						<li><a href="/mark/add" th:text="#{nav.addmark}">Agregar nota</a></li>
+						<li><a href="/mark/list"th:text="#{nav.viewmark}">Ver notas</a></li>
+					</ul></li>
+				<li id="users-menu" class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"  >
+					<span th:text="#{nav.gestionuser}"></span>
+					<span
+						class="caret" ></span>
+				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/user/add">Agregar usuario</a></li>
-						<li><a href="/user/list">Ver usuarios</a></li>
-					</ul>
-				</li>
-				
-				<li><a href="/profesor/list">Ver profesores</a></li>
-				<li><a href="/profesor/add">Agregar profesor</a></li>
+						<li><a href="/user/add" th:text="#{nav.adduser}">Agregar usuario</a></li>
+						<li><a href="/user/list" th:text="#{nav.viewuser}">Ver usuarios</a></li>
+					</ul></li>
+
+				<li><a href="/profesor/list" th:text="#{nav.viewteacher}">Ver profesores</a></li>
+				<li><a href="/profesor/add" th:text="#{nav.addteacher}">Agregar profesor</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href="#"
@@ -51,6 +54,11 @@
 								th:src="@{/img/if_spain_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
 								th:text="#{language.es}">Español</span>
+						</a></li>
+						<li><a id="btnGermany" value="DE"> <img
+								th:src="@{/img/if_germany_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.de}">Deutsch </span>
 						</a></li>
 					</ul></li>
 
