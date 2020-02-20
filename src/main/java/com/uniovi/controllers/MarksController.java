@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.uniovi.entities.Mark;
-import com.uniovi.entities.User;
 import com.uniovi.services.MarksService;
 import com.uniovi.services.UsersService;
 import com.uniovi.validators.AddMarkFormValidator;
@@ -53,6 +52,8 @@ public class MarksController {
 	@RequestMapping(value = "/mark/add", method = RequestMethod.GET)
 	public String setMark(Model model) {
 		model.addAttribute("mark", new Mark());
+		model.addAttribute("usersList", usersService.getUsers());
+
 		return "mark/add";
 	}
 

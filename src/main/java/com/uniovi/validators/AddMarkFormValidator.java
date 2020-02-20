@@ -9,11 +9,10 @@ import org.springframework.validation.Validator;
 import com.uniovi.entities.Mark;
 import com.uniovi.services.MarksService;
 
-import ch.qos.logback.classic.ViewStatusMessagesServlet;
-
 @Component
 public class AddMarkFormValidator implements Validator {
 
+	@SuppressWarnings("unused")
 	@Autowired
 	private MarksService marksService;
 	

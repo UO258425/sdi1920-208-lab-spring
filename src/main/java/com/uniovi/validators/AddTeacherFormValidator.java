@@ -7,7 +7,6 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.uniovi.entities.Profesor;
-import com.uniovi.services.MarksService;
 import com.uniovi.services.ProfesoresService;
 
 @Component

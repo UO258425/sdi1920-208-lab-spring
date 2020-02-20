@@ -10,6 +10,18 @@
 
 		<form class="form-horizontal" method="post" action="/profesor/add" th:object="${profesor}">>
 			<div class="form-group">
+				<label class="control-label col-sm-2" for="user">Departamento:</label>
+				<div class="col-sm-10"
+					th:if="${departmentList != null and not #lists.isEmpty(departmentList)}">
+					<select id="user" class="form-control" name="department">
+						<option th:each="department : ${departmentList}" th:value="${department.id}"
+							th:text="${department.name}+' -'+${department.description}">
+							Departamento</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
 				<label class="control-label col-sm-2" for="dni">DNI:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="dni"

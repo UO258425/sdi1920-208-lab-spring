@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.uniovi.entities.Profesor;
+import com.uniovi.services.DepartmentsService;
 import com.uniovi.services.ProfesoresService;
 import com.uniovi.validators.AddTeacherFormValidator;
 
@@ -20,6 +19,9 @@ public class ProfesoresController {
 
 	@Autowired
 	private ProfesoresService profesoresService;
+	
+	@Autowired
+	private DepartmentsService departmentsService;
 	
 	@Autowired
 	private AddTeacherFormValidator addTeacherFormValidator;
@@ -41,13 +43,17 @@ public class ProfesoresController {
 	}
 
 	@RequestMapping("/profesor/add")
-	public String getProfesor() {
+	public String getProfesor(Model model) {
+		model.addAttribute("departmentList", departmentsService.getDepartments());
+
 		return "profesor/add";
 	}
 
 	@RequestMapping(value = "/profesor/add", method = RequestMethod.GET)
 	public String add(Model model) {
 		model.addAttribute("profesor", new Profesor());
+		model.addAttribute("departmentList", departmentsService.getDepartments());
+
 		return "profesor/add";
 	} 
 

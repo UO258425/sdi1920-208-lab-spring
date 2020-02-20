@@ -14,29 +14,41 @@
 
 				<li><a href="/">Home</a></li>
 				<li id="marks-menu" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#" > 
-										<span th:text="#{nav.gestionmark}"></span>
-					
-					 <span
-						class="caret"></span>
+					data-toggle="dropdown" href="#"> <span
+						th:text="#{nav.gestionmark}"></span> <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/mark/add" th:text="#{nav.addmark}">Agregar nota</a></li>
-						<li><a href="/mark/list"th:text="#{nav.viewmark}">Ver notas</a></li>
+						<li><a href="/mark/add" th:text="#{nav.addmark}">Agregar
+								nota</a></li>
+						<li><a href="/mark/list" th:text="#{nav.viewmark}">Ver
+								notas</a></li>
 					</ul></li>
 				<li id="users-menu" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"  >
-					<span th:text="#{nav.gestionuser}"></span>
-					<span
-						class="caret" ></span>
+					data-toggle="dropdown" href="#"> <span
+						th:text="#{nav.gestionuser}"></span> <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/user/add" th:text="#{nav.adduser}">Agregar usuario</a></li>
-						<li><a href="/user/list" th:text="#{nav.viewuser}">Ver usuarios</a></li>
+						<li><a href="/user/add" th:text="#{nav.adduser}">Agregar
+								usuario</a></li>
+						<li><a href="/user/list" th:text="#{nav.viewuser}">Ver
+								usuarios</a></li>
 					</ul></li>
 
-				<li><a href="/profesor/list" th:text="#{nav.viewteacher}">Ver profesores</a></li>
-				<li><a href="/profesor/add" th:text="#{nav.addteacher}">Agregar profesor</a></li>
+				<li id="departments-menu" class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <span
+						th:text="#{nav.gestiondepartments}"></span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="/department/add" th:text="#{nav.adddepartment}">Agregar
+								nota</a></li>
+						<li><a href="/department/list" th:text="#{nav.viewdepartment}">Ver
+								notas</a></li>
+					</ul></li>
+
+				<li><a href="/profesor/list" th:text="#{nav.viewteacher}">Ver
+						profesores</a></li>
+				<li><a href="/profesor/add" th:text="#{nav.addteacher}">Agregar
+						profesor</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href="#"

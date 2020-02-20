@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+<body>
+
+	<nav th:replace="fragments/nav" />
+
+
+
+	<div class="container">
+		<h2>Detalles del departamento</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">DNI</div>
+			<div class="panel-body" th:text="${department.name}">28276</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">Descripción</div>
+			<div class="panel-body" th:text="${department.name}">
+				Ejercicio 1</div>
+		</div>
+		
+	</div>
+
+	<footer th:replace="fragments/footer" />
+
+</body>
+</html>
