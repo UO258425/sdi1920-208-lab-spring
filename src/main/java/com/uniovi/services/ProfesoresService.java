@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Profesor;
+import com.uniovi.entities.User;
 import com.uniovi.repositories.ProfesoresRepository;
 
 @Service
@@ -36,6 +37,8 @@ public class ProfesoresService {
 	public void deleteProfesor(Long id) {
 		profesoresRepository.deleteById(id);
 	}
-
+	public Profesor getProfesorByDni(String dni) {
+		return profesoresRepository.findByDni(dni);
+	}
 	
 }
