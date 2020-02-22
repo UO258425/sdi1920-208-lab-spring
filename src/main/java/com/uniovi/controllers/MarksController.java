@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.uniovi.entities.Mark;
 import com.uniovi.entities.User;
 import com.uniovi.services.MarksService;
@@ -35,16 +37,23 @@ public class MarksController {
 	private AddMarkFormValidator addMarkFormValidator;
 
 	@RequestMapping("/mark/list")
-	public String getList(Model model, Principal principal) {
-		String dni = principal.getName(); //Dni es el name de la autenticacion
+	public String getList(Model model, Principal principal,
+			@RequestParam(value = "", required = false) String searchText) {
+		String dni = principal.getName(); // Dni es el name de la autenticacion
 		User user = usersService.getUserByDni(dni);
-		model.addAttribute("markList", marksService.getMarksForUser(user));
+
+		if (searchText != null && !searchText.isEmpty()) {
+			model.addAttribute("markList", marksService.searchMarksByDescriptionAndNameForUser(searchText, user));
+		} else {
+
+			model.addAttribute("markList", marksService.getMarksForUser(user));
+		}
 		return "mark/list";
 	}
 
 	@RequestMapping("/mark/list/update")
 	public String updateList(Model model, Principal principal) {
-		String dni = principal.getName(); //Dni es el name de la autenticacion
+		String dni = principal.getName(); // Dni es el name de la autenticacion
 		User user = usersService.getUserByDni(dni);
 		model.addAttribute("markList", marksService.getMarksForUser(user));
 		return "mark/list :: tableMarks";
