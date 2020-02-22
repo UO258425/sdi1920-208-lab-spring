@@ -10,7 +10,7 @@
 			<img src="/img/student-48.png" alt="logo" />
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 
 				<li><a href="/">Home</a></li>
 				<li id="marks-menu" class="dropdown"><a class="dropdown-toggle"
@@ -18,13 +18,14 @@
 						th:text="#{nav.gestionmark}"></span> <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/mark/add" th:text="#{nav.addmark}">Agregar
-								nota</a></li>
+						<li sec:authorize="hasRole('ROLE_PROFESSOR')"><a
+							href="/mark/add" th:text="#{nav.addmark}">Agregar nota</a></li>
 						<li><a href="/mark/list" th:text="#{nav.viewmark}">Ver
 								notas</a></li>
 					</ul></li>
-				<li id="users-menu" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <span
+				<li id="users-menu" class="dropdown"
+					sec:authorize="hasRole('ROLE_ADMIN')"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#"> <span
 						th:text="#{nav.gestionuser}"></span> <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
@@ -34,15 +35,15 @@
 								usuarios</a></li>
 					</ul></li>
 
-				<li id="departments-menu" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <span
+				<li id="departments-menu" class="dropdown"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#"> <span
 						th:text="#{nav.gestiondepartments}"></span> <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="/department/add" th:text="#{nav.adddepartment}">Agregar
 								nota</a></li>
-						<li><a href="/department/list" th:text="#{nav.viewdepartment}">Ver
-								notas</a></li>
+						<li><a href="/department/list"
+							th:text="#{nav.viewdepartment}">Ver notas</a></li>
 					</ul></li>
 
 				<li><a href="/profesor/list" th:text="#{nav.viewteacher}">Ver
@@ -74,10 +75,14 @@
 						</a></li>
 					</ul></li>
 
-				<li><a href="/signup" th:text="#{signup.message}"><span
+				<li sec:authorize="!isAuthenticated()"><a href="/signup"
+					th:text="#{signup.message}"><span
 						class="glyphicon glyphicon-user"></span> Registrate</a></li>
-				<li><a href="/login" th:text="#{login.message}"><span
+				<li sec:authorize="!isAuthenticated()"><a href="/login"
+					th:text="#{login.message}"><span
 						class="glyphicon glyphicon-log-in"></span> Identifícate</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/logout"><span
+						class="glyphicon glyphicon-log-out"></span>Desconectar</a></li>
 			</ul>
 		</div>
 	</div>
