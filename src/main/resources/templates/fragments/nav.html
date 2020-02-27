@@ -46,10 +46,24 @@
 							th:text="#{nav.viewdepartment}">Ver notas</a></li>
 					</ul></li>
 
-				<li><a href="/profesor/list" th:text="#{nav.viewteacher}">Ver
-						profesores</a></li>
-				<li><a href="/profesor/add" th:text="#{nav.addteacher}">Agregar
-						profesor</a></li>
+
+
+				<li id="departments-menu" class="dropdown"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#"> <span
+						th:text="#{nav.gestionteachers}"></span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="/profesor/list" th:text="#{nav.viewteacher}">Ver
+								profesores</a></li>
+						<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/profesor/add" th:text="#{nav.addteacher}">Agregar
+								profesor</a></li>
+					</ul></li>
+
+
+
+
+
+
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href="#"

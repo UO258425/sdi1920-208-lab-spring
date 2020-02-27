@@ -5,7 +5,10 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.uniovi.entities.Department;
 import com.uniovi.entities.Mark;
+import com.uniovi.entities.Profesor;
 import com.uniovi.entities.User;
 
 @Service
@@ -16,6 +19,9 @@ public class InsertSampleDataService {
 	
 	@Autowired
 	private RolesService rolesService;
+	
+	@Autowired
+	private DepartmentsService departmentsService;
 
 	@PostConstruct
 	public void init() {
@@ -106,6 +112,41 @@ public class InsertSampleDataService {
 		usersService.addUser(user4);
 		usersService.addUser(user5);
 		usersService.addUser(user6);
+		
+		
+		
+		Department d1 = new Department("department 1", "a description");
+		Department d2 = new Department("department 2", "a description");
+		Department d3 = new Department("department 3", "a description");
+		Department d4 = new Department("department 4", "a description");
+		Department d5 = new Department("department 5", "a description");
+		Department d6 = new Department("department 6", "a description");
+		
+		Set<Profesor> d1Professors = new HashSet<Profesor>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -2278688001629161061L;
+
+			{
+				;
+				add(new Profesor(null, "123123a", "asdfadfs", "adsfadfs", "asdfadsf"));
+
+			}
+		};
+		
+		d1.setProfesors(d1Professors);
+		
+		departmentsService.addDepartment(d1);
+		departmentsService.addDepartment(d2);
+		departmentsService.addDepartment(d3);
+		departmentsService.addDepartment(d4);
+		departmentsService.addDepartment(d5);
+		departmentsService.addDepartment(d6);
+		
+		
+
+
 	}
 
 }
