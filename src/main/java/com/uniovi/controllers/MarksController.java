@@ -3,8 +3,6 @@ package com.uniovi.controllers;
 import java.security.Principal;
 import java.util.LinkedList;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,9 +25,6 @@ import com.uniovi.validators.AddMarkFormValidator;
 
 @Controller
 public class MarksController {
-
-	@Autowired
-	private HttpSession httpSession;
 
 	@Autowired
 	private MarksService marksService;

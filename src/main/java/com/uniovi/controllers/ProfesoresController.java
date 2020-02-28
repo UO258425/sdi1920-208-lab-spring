@@ -1,6 +1,9 @@
 package com.uniovi.controllers;
 
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,10 +30,15 @@ public class ProfesoresController {
 	private AddTeacherFormValidator addTeacherFormValidator;
 
 	@RequestMapping("/profesor/list")
-	public String getList(Model model) {
-		model.addAttribute("profesoresList", profesoresService.getProfesores());
+	public String getList(Model model, Pageable pageable, Principal principal) {
+		Page<Profesor> profesors = profesoresService.getProfesores(pageable);
+		model.addAttribute("profesoresList", profesors.getContent());
+		model.addAttribute("page", profesors);
 		return "profesor/list";
 	}
+	
+
+	
 
 	@RequestMapping(value = "/profesor/add", method = RequestMethod.POST)
 	public String setProfesor(@Validated Profesor profesor, BindingResult result) {
