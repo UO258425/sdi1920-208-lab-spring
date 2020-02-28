@@ -1,14 +1,19 @@
 package com.uniovi.services;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.uniovi.entities.Mark;
 import com.uniovi.entities.User;
 import com.uniovi.repositories.UsersRepository;
 
@@ -32,6 +37,10 @@ public class UsersService {
 		return users;
 	} 
 	
+	public Page<User> getUsersPaged(Pageable pageable) {
+		Page<User> users = usersRepository.findAllPaged(pageable);
+		return users;
+	} 
 	public User getUser(Long id) {
 		return usersRepository.findById(id).get();
 	}
@@ -48,4 +57,15 @@ public class UsersService {
 	public void deleteUser(Long id) {
 		usersRepository.deleteById (id);
 	}
+	
+	public Page<User> searchUserByNameAndLastName(Pageable pageable, String searchText, User user) {
+		Page<User> users = new PageImpl<User>(new LinkedList<User>());
+		searchText= "%"+searchText+"%";
+		if (user.getRole().equals("ROLE_ADMIN")) {
+			users = usersRepository.searchByNameAndLastName(pageable, searchText);
+		}
+		
+		return users;
+	}
+
 }
