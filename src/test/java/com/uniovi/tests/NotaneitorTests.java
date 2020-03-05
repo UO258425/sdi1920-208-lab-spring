@@ -178,7 +178,7 @@ public class NotaneitorTests {
 		
 		SeleniumUtils.esperarSegundos(driver, 1);
 		// Contamos las notas
-		By enlace = By.xpath("//td[contains(text(), 'Nota A2')]/followingsibling::*[2]");
+		By enlace = By.xpath("//td[contains(text(), 'Nota A2')]/following-sibling::*[2]");
 		driver.findElement(enlace).click();
 		SeleniumUtils.esperarSegundos(driver, 1);
 		// Esperamos por la ventana de detalle

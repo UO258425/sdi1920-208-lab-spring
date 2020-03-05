@@ -27,9 +27,9 @@ public class AddTeacherFormValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "Error.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellidos", "Error.empty");
 		if (profesoresService.getProfesorByDni(profesor.getDni()) != null) {
-			errors.rejectValue("dni", "Error.signup.dni.duplicate");
+			errors.rejectValue("dni", "Error.profesor.dni.duplicate");
 		}
-		if (profesor.getDni().length() < 10 || !Character.isLetter(profesor.getDni().charAt(profesor.getDni().length()-1))) {
+		if (profesor.getDni().length() > 9 || !Character.isLetter(profesor.getDni().charAt(profesor.getDni().length()-1))) {
 			errors.rejectValue("dni", "Error.profesor.dni.length");
 		}
 	}

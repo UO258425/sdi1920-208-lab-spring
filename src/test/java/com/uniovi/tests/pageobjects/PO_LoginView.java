@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.uniovi.tests.utils.SeleniumUtils;
+
 public class PO_LoginView extends PO_NavView {
 
 
@@ -25,6 +27,7 @@ public class PO_LoginView extends PO_NavView {
 	static public void loginAs(WebDriver driver, String user, String password, String textThatShouldAppear) {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, user, password);
-		PO_View.checkElement(driver, "text", textThatShouldAppear);
+		SeleniumUtils.textoPresentePagina(driver, textThatShouldAppear);
+		//PO_View.checkElement(driver, "text", textThatShouldAppear);
 	}
 }
